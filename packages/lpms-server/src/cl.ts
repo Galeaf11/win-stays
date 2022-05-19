@@ -12,7 +12,7 @@ const main = async () => {
     "/my-cool-app/1/my-use-case/proto112233"
   );
   await waku.relay.send(msg);
-  console.log('sended');
+  console.log('sent');
 };
 
 export default main()

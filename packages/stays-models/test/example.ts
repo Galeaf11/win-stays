@@ -1,10 +1,10 @@
 import { utils, Wallet } from "ethers";
 import { Exception, Facility, Item, ItemType, Space, SpaceTier } from "../src/proto/facility";
 import { ServiceProviderData } from "../src/proto/storage";
-import { brotliCompressSync } from "node:zlib"
+import { brotliCompressSync } from "node:zlib";
 import { TypedDataDomain } from "@ethersproject/abstract-signer";
 
-import { utils as vUtils, eip712 } from "@windingtree/videre-sdk"
+import { eip712, utils as vUtils } from "@windingtree/videre-sdk";
 import { SignedMessage } from "@windingtree/videre-sdk/dist/cjs/utils";
 
 
@@ -117,9 +117,19 @@ async function main() {
     new Wallet(utils.randomBytes(32))
   );
 
-  console.log(messageToUpload)
-  console.log(`Signature: ${utils.hexlify(messageToUpload.signature)}`)
-  console.log(`Protobuf length: ${brotliCompressSync(ServiceProviderData.toBinary(messageToUpload)).length}`)
+  console.log(messageToUpload);
+  console.log(`Signature: ${utils.hexlify(messageToUpload.signature)}`);
+  console.log(`Protobuf length: ${brotliCompressSync(ServiceProviderData.toBinary(messageToUpload)).length}`);
+
+  const space = Space.fromBinary(serviceProviderData.items[0].payload);
+  const kind = space.maxNumberOfAdultOccupantsOneof.oneofKind; //it's works
+  //{
+  //  oneofKind: 'maxNumberOfAdultOccupants', maxNumberOfAdultOccupants: 2
+  //} ↓
+  console.log(space.maxNumberOfAdultOccupantsOneof);
+
+  //it's not works ↓ (need to uncomment)
+  //const maxNum = space.maxNumberOfAdultOccupantsOneof.maxNumberOfAdultOccupants;
 }
 
 main()

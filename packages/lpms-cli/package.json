@@ -1,6 +1,6 @@
 {
   "name": "@windingtree/lpms-cli",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "LPMS API CLI",
   "publishConfig": {
     "access": "public"
@@ -41,9 +41,9 @@
     "conf": "^10.1.2",
     "axios": "^0.27.2",
     "ora": "^5.4.1",
-    "@windingtree/videre-sdk": "^0.4.1",
+    "@windingtree/videre-sdk": "^0.4.5",
     "@windingtree/stays-models": "0.0.1",
-    "@windingtree/videre-contracts": "^0.1.6",
+    "@windingtree/videre-contracts": "0.2.0-alpha.1",
     "typechain": "^8.0.0",
     "@typechain/ethers-v5": "^10.0.0"
   }

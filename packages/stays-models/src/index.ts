@@ -10,6 +10,9 @@ import * as pingpong from './proto/pingpong';
 import * as storage from './proto/storage';
 import * as timestamp from './proto/timestamp';
 import * as token from './proto/token';
+import * as person from './proto/person';
+import * as piie from './proto/piie';
+import * as lpms from './proto/lpms';
 
 export const proto = {
   ask,
@@ -21,5 +24,8 @@ export const proto = {
   pingpong,
   storage,
   timestamp,
-  token
+  token,
+  person,
+  piie,
+  lpms
 };

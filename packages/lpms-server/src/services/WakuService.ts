@@ -1,6 +1,5 @@
 import { Waku, WakuMessage } from 'js-waku';
 import type { MessageType } from '@protobuf-ts/runtime';
-import { wakuConfig } from '../config';
 
 export type WakuMessageHandler = (message: WakuMessage) => void;
 
@@ -13,7 +12,13 @@ export class WakuService {
     }
 
     console.log("Connecting to Waku...");
-    const waku = await Waku.create(wakuConfig);
+    const waku = await Waku.create({
+      bootstrap: {
+        peers: [
+          '/dns4/node-01.eu-central-1.waku.windingtree.com/tcp/443/wss/p2p/16Uiu2HAmV2PXCqrrjHbkceguC4Y2q7XgmzzYfjEgd69RvAU3wKvU'
+        ]
+      },
+    });
     await waku.waitForRemotePeer();
     console.log("...Connected");
 
@@ -40,6 +45,7 @@ export class WakuService {
     wakuMessage: WakuMessage
   ): T | undefined {
     if (!wakuMessage.payload) return;
+    console.log(protoMessageInstance.fromBinary(wakuMessage.payload));
     return protoMessageInstance.fromBinary(wakuMessage.payload);
   }
 

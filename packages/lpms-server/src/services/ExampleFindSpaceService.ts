@@ -31,6 +31,7 @@ export class ExampleFindSpaceService {
       serviceProvider: utils.arrayify(utils.formatBytes32String('provider')),
       payload: Facility.toBinary(
         {
+          emails: [], phones: [], uris: [],
           name: 'Awesome ski chalet',
           description: 'Some chalet in the best place of all! 🏔️',
           location: {
@@ -45,7 +46,6 @@ export class ExampleFindSpaceService {
             { uri: '/image1.jpg', description: 'Chic guesthouse' },
             { uri: '/image2.jpg', description: 'Winter Wonderland' }
           ],
-          website: 'https://wonderland.somewhere/',
           connectivity: {
             wifiAvailableOneof: { oneofKind: "wifiAvailable", wifiAvailable: true },
             wifiForFreeOneof: { oneofKind: "wifiForFree", wifiForFree: true }
@@ -66,7 +66,7 @@ export class ExampleFindSpaceService {
               type: ItemType.SPACE,
               payload: Space.toBinary(
                 {
-                  website: 'https://wonderland.somewhere/fancy',
+                  uris: [],
                   maxNumberOfAdultOccupantsOneof: {
                     oneofKind: "maxNumberOfAdultOccupants",
                     maxNumberOfAdultOccupants: 2
@@ -155,7 +155,7 @@ export class ExampleFindSpaceService {
               type: ItemType.SPACE,
               payload: Space.toBinary(
                 {
-                  website: 'https://wonderland.somewhere/fancy',
+                  uris: [],
                   maxNumberOfAdultOccupantsOneof: {
                     oneofKind: "maxNumberOfAdultOccupants",
                     maxNumberOfAdultOccupants: 2

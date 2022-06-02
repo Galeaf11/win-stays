@@ -22,7 +22,6 @@ export type FacilitySpaceLevelKeys = 'metadata' | 'metadata_generic'
 export type FacilityItemType = 'spaces' | 'otherItems';
 export type FacilityItemValues = Item | FacilitySpaceLevelValues;
 export type DateType = `${number}-${number}-${number}`
-export type SpaceSubDBs = 'available'
 
 export default class DBService {
   protected db: DBLevel;
